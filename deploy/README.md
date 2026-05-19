@@ -17,7 +17,7 @@ Then in NGINX Proxy Manager UI:
 - Create a new Proxy Host
 - Domain Names: `kaestria.fr`, `www.kaestria.fr`
 - Forward Hostname/IP: `172.17.0.1`
-- Forward Port: `4003`
+- Forward Port: `8080`
 - SSL: request Let's Encrypt cert (with HTTP/2 + Force SSL + HSTS)
 
 ## Redeploy after `git push`

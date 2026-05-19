@@ -6,7 +6,7 @@ services:
     image: kaestria/web:latest
     restart: unless-stopped
     ports:
-      - "4003:80"
+      - "8080:80"
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost/"]
       interval: 30s
