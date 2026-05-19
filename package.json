@@ -1,15 +1,16 @@
 {
   "name": "kaestria-web",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "Kaestria — Senior IT consulting & AI apps. Marketing site.",
   "type": "module",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
     "@tailwindcss/vite": "^4.3.0",
