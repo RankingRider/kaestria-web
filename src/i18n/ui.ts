@@ -94,7 +94,7 @@ export const ui: Record<Lang, UI> = {
       titleLine2: '& AI-native apps.',
       descIntro: 'Kaestria is the consulting and product studio of',
       descRest:
-        '. 15+ years of shipping software, now focused on building real AI products — and helping teams do the same.',
+        '. 15+ years of delivering projects & shipping software, now focused on building real AI products — and helping teams do the same.',
       signature: 'Seasoned IT meets AI velocity. Shipping from the Indian Ocean.',
       ctaPrimary: 'Start a project',
       ctaSecondary: 'See products',
@@ -219,7 +219,7 @@ export const ui: Record<Lang, UI> = {
       titleLine2: '& apps AI-native.',
       descIntro: 'Kaestria est le studio de conseil et de produits d\'',
       descRest:
-        '. 15+ années à livrer du logiciel, maintenant focalisé sur construire de vrais produits IA — et aider les équipes à faire de même.',
+        '. 15+ années à piloter des projets et livrer du logiciel, maintenant focalisé sur construire de vrais produits IA — et aider les équipes à faire de même.',
       signature: 'L\'expertise IT rencontre la vélocité IA. Livré depuis l\'Océan Indien.',
       ctaPrimary: 'Démarrer un projet',
       ctaSecondary: 'Voir les produits',
