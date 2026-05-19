@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import type { Lang } from '../i18n/ui';
+import { altLangUrl, type Lang } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -13,6 +13,39 @@ const {
   description = 'Senior IT consulting and AI-native products by Arthur Mrowiec. Shipping production-ready apps from the Indian Ocean.',
   lang = 'en',
 } = Astro.props;
+
+const site = 'https://kaestria.fr';
+const canonical = new URL(Astro.url.pathname, site).toString();
+const altPath = altLangUrl(Astro.url.pathname, lang);
+const altLang: Lang = lang === 'en' ? 'fr' : 'en';
+const altUrl = new URL(altPath, site).toString();
+const ogImage = new URL('/og-image.png', site).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Kaestria',
+  legalName: 'EI Arthur Mrowiec',
+  url: site,
+  logo: new URL('/favicon.svg', site).toString(),
+  description,
+  founder: {
+    '@type': 'Person',
+    name: 'Arthur Mrowiec',
+    jobTitle: 'Senior IT Project Manager & AI Engineer',
+    sameAs: ['https://www.linkedin.com/in/arthur-mrowiec/', 'https://fr.fiverr.com/amrowiec'],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '11 rue Maurice Lecolier',
+    postalCode: '97441',
+    addressLocality: 'Sainte-Suzanne',
+    addressRegion: 'Reunion Island',
+    addressCountry: 'FR',
+  },
+  email: 'contact@kaestria.fr',
+  sameAs: ['https://www.linkedin.com/in/arthur-mrowiec/', 'https://fr.fiverr.com/amrowiec'],
+};
 ---
 
 <!doctype html>
@@ -23,10 +56,27 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#07090f" />
 
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={altLang} href={altUrl} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', site).toString()} />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kaestria.fr" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    <meta property="og:site_name" content="Kaestria" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,6 +87,8 @@ const {
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
   </head>
   <body class="min-h-screen overflow-x-hidden">
     <slot />
