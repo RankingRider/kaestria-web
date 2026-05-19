@@ -27,6 +27,10 @@ export type UI = {
   products: {
     sectionTitle: string;
     sectionSubtitle: string;
+    groupWellness: string;
+    groupWellnessTag: string;
+    groupEcommerce: string;
+    groupEcommerceTag: string;
     badges: { new: string; live: string; inReview: string; soon: string };
     items: Array<{
       tag: string;
@@ -97,7 +101,11 @@ export const ui: Record<Lang, UI> = {
     },
     products: {
       sectionTitle: 'Apps shipping today, more on the way.',
-      sectionSubtitle: 'A growing portfolio of AI-native products for wellness and e-commerce.',
+      sectionSubtitle: 'A growing portfolio of AI-native products across two verticals.',
+      groupWellness: 'Wellness',
+      groupWellnessTag: '/wellness · 1 product',
+      groupEcommerce: 'E-commerce',
+      groupEcommerceTag: '/e-commerce · 4 products',
       badges: { new: 'New', live: 'Live', inReview: 'In review', soon: 'Soon' },
       items: [
         {
@@ -218,7 +226,11 @@ export const ui: Record<Lang, UI> = {
     },
     products: {
       sectionTitle: 'Des apps en production, et d\'autres en route.',
-      sectionSubtitle: 'Un portfolio croissant de produits AI-native pour le wellness et l\'e-commerce.',
+      sectionSubtitle: 'Un portfolio croissant de produits AI-native sur deux verticales.',
+      groupWellness: 'Bien-être',
+      groupWellnessTag: '/wellness · 1 produit',
+      groupEcommerce: 'E-commerce',
+      groupEcommerceTag: '/e-commerce · 4 produits',
       badges: { new: 'Nouveau', live: 'En ligne', inReview: 'En review', soon: 'Bientôt' },
       items: [
         {

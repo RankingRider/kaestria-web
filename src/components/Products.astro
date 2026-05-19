@@ -7,67 +7,67 @@ interface Props {
 
 const { t } = Astro.props;
 
-// Per-product visual + link metadata, paired by position with t.products.items.
-// Suplio keeps its own teal accent; all RankingRider variants share the violet brand.
-const RR_ACCENT = 'from-violet-500/25 via-violet-600/10 to-fuchsia-500/5';
-const RR_BADGE_LIVE = 'bg-violet-400/20 text-violet-200 border border-violet-400/30';
-const RR_BADGE_REVIEW = 'bg-amber-400/20 text-amber-300 border border-amber-400/30';
-const RR_BADGE_SOON = 'bg-violet-400/10 text-violet-300 border border-violet-400/20';
+// Per-RR-product subtle violet shade variation (still unified family)
+const RR_VARIANTS = [
+  { accent: 'from-violet-500/30 via-violet-600/10 to-indigo-500/5', badgeLive: 'bg-violet-400/25 text-violet-100 border border-violet-400/40' },
+  { accent: 'from-purple-500/30 via-purple-600/10 to-fuchsia-500/5', badgeLive: 'bg-purple-400/25 text-purple-100 border border-purple-400/40' },
+  { accent: 'from-fuchsia-500/25 via-violet-600/10 to-purple-500/5', badgeReview: 'bg-amber-400/20 text-amber-300 border border-amber-400/30' },
+  { accent: 'from-indigo-500/25 via-violet-600/10 to-blue-500/5', badgeSoon: 'bg-violet-400/15 text-violet-200 border border-violet-400/25' },
+];
 
-const meta = [
-  {
-    name: 'Suplio',
-    accent: 'from-emerald-400/20 to-teal-500/5',
-    badgeColor: 'bg-accent text-bg',
-    href: 'https://play.google.com/store/apps/details?id=com.scop.suplio',
-    span: 'md:col-span-2 md:row-span-2',
-    brand: 'suplio' as const,
-  },
+const items = t.products.items;
+
+const suplio = {
+  name: 'Suplio',
+  tag: items[0]!.tag,
+  description: items[0]!.description,
+  badge: t.products.badges[items[0]!.badgeKey],
+  cta: items[0]!.cta,
+  href: 'https://play.google.com/store/apps/details?id=com.scop.suplio',
+};
+
+const rrProducts = [
   {
     name: 'RankingRider Web App',
-    accent: RR_ACCENT,
-    badgeColor: RR_BADGE_LIVE,
+    tag: items[1]!.tag,
+    description: items[1]!.description,
+    badge: t.products.badges[items[1]!.badgeKey],
+    badgeColor: RR_VARIANTS[0]!.badgeLive!,
+    accent: RR_VARIANTS[0]!.accent,
     href: 'https://www.rankingrider.com',
-    span: '',
-    brand: 'rr' as const,
+    cta: items[1]!.cta,
   },
   {
     name: 'RankingRider Shopify',
-    accent: RR_ACCENT,
-    badgeColor: RR_BADGE_LIVE,
+    tag: items[2]!.tag,
+    description: items[2]!.description,
+    badge: t.products.badges[items[2]!.badgeKey],
+    badgeColor: RR_VARIANTS[1]!.badgeLive!,
+    accent: RR_VARIANTS[1]!.accent,
     href: 'https://apps.shopify.com/rankingrider',
-    span: '',
-    brand: 'rr' as const,
+    cta: items[2]!.cta,
   },
   {
     name: 'RankingRider Wix',
-    accent: RR_ACCENT,
-    badgeColor: RR_BADGE_REVIEW,
+    tag: items[3]!.tag,
+    description: items[3]!.description,
+    badge: t.products.badges[items[3]!.badgeKey],
+    badgeColor: RR_VARIANTS[2]!.badgeReview!,
+    accent: RR_VARIANTS[2]!.accent,
     href: null,
-    span: '',
-    brand: 'rr' as const,
+    ctaInactive: items[3]!.ctaInactive,
   },
   {
     name: 'RankingRider BigCommerce',
-    accent: RR_ACCENT,
-    badgeColor: RR_BADGE_SOON,
+    tag: items[4]!.tag,
+    description: items[4]!.description,
+    badge: t.products.badges[items[4]!.badgeKey],
+    badgeColor: RR_VARIANTS[3]!.badgeSoon!,
+    accent: RR_VARIANTS[3]!.accent,
     href: null,
-    span: '',
-    brand: 'rr' as const,
+    ctaInactive: items[4]!.ctaInactive,
   },
 ];
-
-const products = t.products.items.map((item, i) => {
-  const m = meta[i]!;
-  return {
-    ...m,
-    tag: item.tag,
-    description: item.description,
-    badge: t.products.badges[item.badgeKey],
-    cta: item.cta,
-    ctaInactive: item.ctaInactive,
-  };
-});
 ---
 
 <section id="products" class="py-24 lg:py-32 relative">
@@ -82,38 +82,81 @@ const products = t.products.items.map((item, i) => {
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-      {products.map((p) => {
-        const linkClass = p.brand === 'rr'
-          ? 'inline-flex items-center gap-1 text-sm font-medium text-violet-300 hover:gap-2 transition-all'
-          : 'inline-flex items-center gap-1 text-sm font-medium text-accent hover:gap-2 transition-all';
-        return (
-          <article
-            class:list={[
-              'group relative rounded-2xl border border-white/5 bg-bg-elevated p-6 lg:p-8 overflow-hidden hover:border-white/15 transition-all',
-              p.span,
-            ]}
-          >
-            <div class:list={['absolute inset-0 bg-gradient-to-br opacity-60 pointer-events-none', p.accent]}></div>
+    {/* ── Wellness ── */}
+    <div class="mb-20">
+      <div class="flex items-baseline gap-4 mb-6 pb-4 border-b border-white/5">
+        <h3 class="text-2xl font-bold tracking-tight">{t.products.groupWellness}</h3>
+        <span class="font-mono text-xs text-text-dim">{t.products.groupWellnessTag}</span>
+      </div>
+
+      <article class="group relative rounded-2xl border border-white/5 bg-bg-elevated p-8 lg:p-12 overflow-hidden hover:border-white/15 transition-all">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/15 via-teal-500/8 to-cyan-500/5 opacity-70 pointer-events-none"></div>
+        <div
+          class="absolute -top-24 -right-24 w-96 h-96 rounded-full pointer-events-none"
+          style="background: radial-gradient(circle, rgba(45,212,191,0.12) 0%, transparent 65%);"
+        ></div>
+
+        <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div class="lg:col-span-2">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-cyan-500 flex items-center justify-center font-bold text-bg text-lg">
+                S
+              </div>
+              <div>
+                <div class="font-mono text-xs text-text-dim mb-1">{suplio.tag}</div>
+                <h4 class="text-2xl lg:text-3xl font-bold tracking-tight">{suplio.name}</h4>
+              </div>
+            </div>
+            <p class="text-text-muted leading-relaxed text-base lg:text-lg max-w-2xl">
+              {suplio.description}
+            </p>
+          </div>
+
+          <div class="lg:col-span-1 flex lg:flex-col gap-3 lg:items-end items-start">
+            <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-accent text-bg">
+              {suplio.badge}
+            </span>
+            <a
+              href={suplio.href}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent text-bg font-semibold hover:bg-accent-dim transition-all glow-accent"
+            >
+              {suplio.cta} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    {/* ── E-commerce ── */}
+    <div>
+      <div class="flex items-baseline gap-4 mb-6 pb-4 border-b border-white/5">
+        <h3 class="text-2xl font-bold tracking-tight">{t.products.groupEcommerce}</h3>
+        <span class="font-mono text-xs text-text-dim">{t.products.groupEcommerceTag}</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+        {rrProducts.map((p) => (
+          <article class="group relative rounded-2xl border border-white/5 bg-bg-elevated p-6 lg:p-8 overflow-hidden hover:border-violet-400/20 transition-all">
+            <div class:list={['absolute inset-0 bg-gradient-to-br opacity-70 pointer-events-none', p.accent]}></div>
             <div class="relative flex flex-col h-full">
               <div class="flex items-start justify-between mb-4 gap-3">
                 <div class="flex items-start gap-3 min-w-0">
-                  {p.brand === 'rr' && (
-                    <span
-                      class="shrink-0 mt-0.5 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-violet-500/15 border border-violet-400/25 text-violet-300"
-                      aria-hidden="true"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-                      </svg>
-                    </span>
-                  )}
+                  <span
+                    class="shrink-0 mt-0.5 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-violet-500/20 border border-violet-400/30 text-violet-200"
+                    aria-hidden="true"
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                    </svg>
+                  </span>
                   <div class="min-w-0">
                     <div class="font-mono text-xs text-text-dim mb-1">{p.tag}</div>
-                    <h3 class="text-xl lg:text-2xl font-bold tracking-tight truncate">{p.name}</h3>
+                    <h4 class="text-lg lg:text-xl font-bold tracking-tight">{p.name}</h4>
                   </div>
                 </div>
                 <span class:list={['shrink-0 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md', p.badgeColor]}>
@@ -123,7 +166,12 @@ const products = t.products.items.map((item, i) => {
               <p class="text-text-muted text-sm leading-relaxed flex-1">{p.description}</p>
               <div class="mt-6">
                 {p.href ? (
-                  <a href={p.href} target="_blank" rel="noopener" class={linkClass}>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-1 text-sm font-medium text-violet-300 hover:gap-2 transition-all"
+                  >
                     {p.cta} <span aria-hidden="true">→</span>
                   </a>
                 ) : (
@@ -132,8 +180,8 @@ const products = t.products.items.map((item, i) => {
               </div>
             </div>
           </article>
-        );
-      })}
+        ))}
+      </div>
     </div>
   </div>
 </section>
