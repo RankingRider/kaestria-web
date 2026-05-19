@@ -165,7 +165,7 @@ export const ui: Record<Lang, UI> = {
             'Self-hosted N8N workflows, OpenClaw agent runtimes, and custom Docker stacks deployed on your infrastructure. Own your automation, no SaaS lock-in.',
         },
         {
-          title: 'Senior Tech Consulting',
+          title: 'Senior IT Consulting',
           description:
             '15+ years across architecture, DevOps, cloud, and product delivery. From technical due diligence to scaling decisions, I bring senior judgment when it matters most.',
         },
@@ -290,7 +290,7 @@ export const ui: Record<Lang, UI> = {
             'Workflows N8N self-hosted, runtimes d\'agents OpenClaw, et stacks Docker custom déployées sur votre infra. Maîtrisez votre automatisation, sans lock-in SaaS.',
         },
         {
-          title: 'Conseil tech senior',
+          title: 'Conseil IT senior',
           description:
             '15+ années sur l\'architecture, le DevOps, le cloud et la livraison produit. De l\'audit technique aux décisions de scaling, j\'apporte un regard senior quand ça compte vraiment.',
         },
