@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Mentions légales — Kaestria" description="Mentions légales du site Kaestria, conforme aux exigences françaises pour les entreprises individuelles.">
+  <Header />
+  <main class="pt-32 pb-24">
+    <article class="max-w-3xl mx-auto px-6 lg:px-8">
+      <div class="font-mono text-sm text-accent mb-3">/legal</div>
+      <h1 class="text-4xl lg:text-5xl font-bold tracking-tight mb-12">Mentions légales</h1>
+
+      <div class="space-y-8 text-text-muted leading-relaxed">
+        <section>
+          <h2 class="text-xl font-bold text-text mb-3">Éditeur du site</h2>
+          <p>
+            <span class="text-text">EI Arthur Mrowiec</span> — exerçant sous le nom commercial
+            <span class="text-text">Kaestria</span>.
+          </p>
+          <p class="mt-2">
+            11 rue Maurice Lecolier<br />
+            97441 Sainte-Suzanne<br />
+            La Réunion, France
+          </p>
+          <p class="mt-2">
+            <span class="text-text-dim">SIRET :</span> 851 571 927 00025
+          </p>
+          <p class="mt-2">
+            <span class="text-text-dim">Email :</span>
+            <a href="mailto:contact@kaestria.fr" class="text-accent hover:underline">contact@kaestria.fr</a>
+          </p>
+          <p class="mt-2">
+            <span class="text-text-dim">Directeur de la publication :</span> Arthur Mrowiec
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-text mb-3">Hébergement</h2>
+          <p>
+            <span class="text-text">Hostinger International Ltd.</span><br />
+            61 Lordou Vironos Street, 6023 Larnaca, Cyprus<br />
+            <a href="https://www.hostinger.com" target="_blank" rel="noopener" class="text-accent hover:underline">www.hostinger.com</a>
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-text mb-3">Propriété intellectuelle</h2>
+          <p>
+            L'ensemble du contenu de ce site (textes, graphismes, logos, icônes, images) est la
+            propriété exclusive de Kaestria, sauf mention contraire. Toute reproduction, distribution,
+            modification ou utilisation sans autorisation écrite préalable est interdite.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-text mb-3">Données personnelles</h2>
+          <p>
+            Ce site ne collecte aucune donnée personnelle directement. Les politiques de
+            confidentialité spécifiques aux produits Kaestria sont disponibles individuellement
+            (voir <a href="https://suplio-api.kaestria.fr/privacy" target="_blank" rel="noopener" class="text-accent hover:underline">Privacy Policy</a>).
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-text mb-3">Cookies</h2>
+          <p>
+            Ce site n'utilise pas de cookies de suivi ni d'analytique tiers.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-text mb-3">Loi applicable</h2>
+          <p>
+            Les présentes mentions légales sont régies par le droit français. En cas de litige, les
+            tribunaux français seront seuls compétents.
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

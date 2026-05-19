@@ -1,0 +1,117 @@
+---
+const products = [
+  {
+    name: 'Suplio',
+    tag: 'Mobile · iOS & Android',
+    description:
+      'AI-powered supplement scheduler. Scan barcodes or label photos, get personalized timing recommendations based on your daily routine, and never miss a dose.',
+    accent: 'from-emerald-400/20 to-teal-500/5',
+    badge: 'New',
+    badgeColor: 'bg-accent text-bg',
+    href: 'https://play.google.com/store/apps/details?id=com.scop.suplio',
+    cta: 'View on Google Play',
+    span: 'md:col-span-2 md:row-span-2',
+  },
+  {
+    name: 'RankingRider Web App',
+    tag: 'Web · SaaS',
+    description:
+      'AI-driven Shopify SEO automation. Bulk-generate meta tags, audit your store, and predict ranking impact before pushing changes.',
+    accent: 'from-violet-400/20 to-indigo-500/5',
+    badge: 'Live',
+    badgeColor: 'bg-violet-400/20 text-violet-300 border border-violet-400/30',
+    href: 'https://www.rankingrider.com',
+    cta: 'Visit rankingrider.com',
+    span: '',
+  },
+  {
+    name: 'RankingRider Shopify',
+    tag: 'Shopify App',
+    description:
+      'Same AI SEO power, deeply integrated into your Shopify admin. Optimize products in bulk without leaving your store.',
+    accent: 'from-emerald-400/15 to-emerald-600/5',
+    badge: 'Live',
+    badgeColor: 'bg-emerald-400/20 text-emerald-300 border border-emerald-400/30',
+    href: null,
+    cta: 'Shopify App Store',
+    span: '',
+  },
+  {
+    name: 'RankingRider Wix',
+    tag: 'Wix App',
+    description:
+      'Wix store SEO automation, built on the same AI engine. In review on Wix App Market.',
+    accent: 'from-amber-400/15 to-orange-500/5',
+    badge: 'In review',
+    badgeColor: 'bg-amber-400/20 text-amber-300 border border-amber-400/30',
+    href: null,
+    cta: 'Coming soon',
+    span: '',
+  },
+  {
+    name: 'RankingRider BigCommerce',
+    tag: 'BigCommerce App',
+    description:
+      'The same SEO automation toolkit, extending to BigCommerce stores.',
+    accent: 'from-sky-400/15 to-blue-500/5',
+    badge: 'Soon',
+    badgeColor: 'bg-sky-400/20 text-sky-300 border border-sky-400/30',
+    href: null,
+    cta: 'Coming Q3 2026',
+    span: '',
+  },
+];
+---
+
+<section id="products" class="py-24 lg:py-32 relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-16">
+      <div class="font-mono text-sm text-accent mb-3">/products</div>
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl text-balance">
+        Apps shipping today, more on the way.
+      </h2>
+      <p class="mt-4 text-text-muted text-lg max-w-2xl">
+        A growing portfolio of AI-native products for wellness and e-commerce.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+      {products.map((p) => (
+        <article
+          class:list={[
+            'group relative rounded-2xl border border-white/5 bg-bg-elevated p-6 lg:p-8 overflow-hidden hover:border-white/15 transition-all',
+            p.span,
+          ]}
+        >
+          <div class:list={['absolute inset-0 bg-gradient-to-br opacity-50 pointer-events-none', p.accent]}></div>
+          <div class="relative flex flex-col h-full">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <div class="font-mono text-xs text-text-dim mb-1">{p.tag}</div>
+                <h3 class="text-xl lg:text-2xl font-bold tracking-tight">{p.name}</h3>
+              </div>
+              <span class:list={['text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md', p.badgeColor]}>
+                {p.badge}
+              </span>
+            </div>
+            <p class="text-text-muted text-sm leading-relaxed flex-1">{p.description}</p>
+            <div class="mt-6">
+              {p.href ? (
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-1 text-sm font-medium text-accent hover:gap-2 transition-all"
+                >
+                  {p.cta} <span aria-hidden="true">→</span>
+                </a>
+              ) : (
+                <span class="text-sm text-text-dim italic">{p.cta}</span>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

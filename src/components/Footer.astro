@@ -1,0 +1,23 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/5 py-12 mt-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 text-sm text-text-dim">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 rounded-md bg-gradient-to-br from-accent to-cyan-500 flex items-center justify-center font-bold text-bg text-xs">
+          K
+        </div>
+        <span>© {year} Kaestria — EI Arthur Mrowiec</span>
+      </div>
+
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <a href="/legal" class="hover:text-text transition-colors">Mentions légales</a>
+        <a href="https://suplio-api.kaestria.fr/privacy" target="_blank" rel="noopener" class="hover:text-text transition-colors">Privacy</a>
+        <a href="https://suplio-api.kaestria.fr/terms" target="_blank" rel="noopener" class="hover:text-text transition-colors">Terms</a>
+        <a href="mailto:contact@kaestria.fr" class="hover:text-text transition-colors">contact@kaestria.fr</a>
+      </nav>
+    </div>
+  </div>
+</footer>

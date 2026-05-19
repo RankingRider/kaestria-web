@@ -1,0 +1,52 @@
+---
+const services = [
+  {
+    icon: '◉',
+    title: 'AI Training & Workshops',
+    description:
+      'Hands-on workshops on Claude, GPT, and production LLM patterns. From prompt engineering basics to agent orchestration. Tailored for engineering teams and product leads.',
+  },
+  {
+    icon: '◈',
+    title: 'Vibe Coding',
+    description:
+      'AI-assisted development with Claude Code. I show your team how to ship features 5–10× faster by partnering with AI instead of fighting it. Real codebase, real velocity.',
+  },
+  {
+    icon: '◇',
+    title: 'Automation Deployment',
+    description:
+      'Self-hosted N8N workflows, OpenClaw agent runtimes, and custom Docker stacks deployed on your infrastructure. Own your automation, no SaaS lock-in.',
+  },
+  {
+    icon: '◐',
+    title: 'Senior Tech Consulting',
+    description:
+      '15+ years across architecture, DevOps, cloud, and product delivery. From technical due diligence to scaling decisions, I bring senior judgment when it matters most.',
+  },
+];
+---
+
+<section id="services" class="py-24 lg:py-32 relative bg-bg-elevated/30">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-16">
+      <div class="font-mono text-sm text-accent mb-3">/services</div>
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl text-balance">
+        Practical AI expertise, senior delivery.
+      </h2>
+      <p class="mt-4 text-text-muted text-lg max-w-2xl">
+        Most AI projects don't ship. I help yours actually does.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+      {services.map((s) => (
+        <article class="group rounded-2xl border border-white/5 bg-bg p-8 hover:border-accent/30 transition-all">
+          <div class="text-accent text-2xl mb-4 font-mono">{s.icon}</div>
+          <h3 class="text-xl font-bold tracking-tight mb-3">{s.title}</h3>
+          <p class="text-text-muted text-sm leading-relaxed">{s.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
