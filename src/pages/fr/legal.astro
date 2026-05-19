@@ -1,15 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { getT } from '../i18n/ui';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getT } from '../../i18n/ui';
 
-const lang = 'en';
+const lang = 'fr';
 const t = getT(lang);
 const l = t.legalPage;
 ---
 
-<Layout lang={lang} title="Legal notice — Kaestria" description="Legal notice for the Kaestria website.">
+<Layout lang={lang} title="Mentions légales — Kaestria" description="Mentions légales du site Kaestria, conforme aux exigences françaises pour les entreprises individuelles.">
   <Header lang={lang} t={t} />
   <main class="pt-32 pb-24">
     <article class="max-w-3xl mx-auto px-6 lg:px-8">
@@ -26,14 +26,14 @@ const l = t.legalPage;
             La Réunion, France
           </p>
           <p class="mt-2">
-            <span class="text-text-dim">SIRET:</span> 851 571 927 00025
+            <span class="text-text-dim">SIRET :</span> 851 571 927 00025
           </p>
           <p class="mt-2">
-            <span class="text-text-dim">Email:</span>
+            <span class="text-text-dim">Email :</span>
             <a href="mailto:contact@kaestria.fr" class="text-accent hover:underline">contact@kaestria.fr</a>
           </p>
           <p class="mt-2">
-            <span class="text-text-dim">{l.director}:</span> Arthur Mrowiec
+            <span class="text-text-dim">{l.director} :</span> Arthur Mrowiec
           </p>
         </section>
 

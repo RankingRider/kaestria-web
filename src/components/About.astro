@@ -1,4 +1,11 @@
 ---
+import type { UI } from '../i18n/ui';
+
+interface Props {
+  t: UI;
+}
+
+const { t } = Astro.props;
 ---
 
 <section id="about" class="py-24 lg:py-32 relative">
@@ -7,41 +14,31 @@
       <div class="lg:col-span-2">
         <div class="font-mono text-sm text-accent mb-3">/about</div>
         <h2 class="text-4xl lg:text-5xl font-bold tracking-tight text-balance">
-          Hi, I'm Arthur.
+          {t.about.title}
         </h2>
       </div>
 
       <div class="lg:col-span-3 space-y-6 text-text-muted text-lg leading-relaxed">
         <p>
-          <span class="text-text font-medium">Senior IT Project Manager & AI Engineer</span> with
-          <span class="text-text font-medium">15+ years</span> of experience shipping software
-          across startups, scale-ups, and large organizations.
+          <span class="text-text font-medium">{t.about.p1Role}</span>{t.about.p1Tail}<span class="text-text font-medium">{t.about.p1Years}</span>{t.about.p1End}
         </p>
         <p>
-          I run Kaestria — a one-person studio combining
-          <span class="text-accent font-medium">consulting</span> (where I help teams adopt AI
-          without breaking what works) and
-          <span class="text-accent font-medium">product engineering</span> (where I build
-          AI-native apps end to end — code, design, ops, distribution).
+          {t.about.p2Lead}<span class="text-accent font-medium">{t.about.p2Consulting}</span>{t.about.p2Middle}<span class="text-accent font-medium">{t.about.p2Product}</span>{t.about.p2Tail}
         </p>
-        <p>
-          Generalist by training, AI expert by current practice. I speak
-          <span class="font-mono text-text text-base">English · Français · Polski</span>
-          and operate remote-first from Réunion Island.
-        </p>
+        <p>{t.about.p3}</p>
 
         <div class="pt-6 grid grid-cols-3 gap-6 border-t border-white/10">
           <div>
             <div class="text-2xl font-bold text-accent">15+</div>
-            <div class="text-xs text-text-dim uppercase tracking-wider mt-1">Years XP</div>
+            <div class="text-xs text-text-dim uppercase tracking-wider mt-1">{t.about.statsYears}</div>
           </div>
           <div>
             <div class="text-2xl font-bold text-accent">5</div>
-            <div class="text-xs text-text-dim uppercase tracking-wider mt-1">Products shipped</div>
+            <div class="text-xs text-text-dim uppercase tracking-wider mt-1">{t.about.statsProducts}</div>
           </div>
           <div>
             <div class="text-2xl font-bold text-accent">3</div>
-            <div class="text-xs text-text-dim uppercase tracking-wider mt-1">Languages</div>
+            <div class="text-xs text-text-dim uppercase tracking-wider mt-1">{t.about.statsLanguages}</div>
           </div>
         </div>
       </div>

@@ -1,4 +1,11 @@
 ---
+import type { UI } from '../i18n/ui';
+
+interface Props {
+  t: UI;
+}
+
+const { t } = Astro.props;
 ---
 
 <section id="contact" class="py-24 lg:py-32 relative">
@@ -13,11 +20,10 @@
       <div class="relative max-w-2xl">
         <div class="font-mono text-sm text-accent mb-3">/contact</div>
         <h2 class="text-4xl lg:text-5xl font-bold tracking-tight text-balance">
-          Let's build something together.
+          {t.contact.title}
         </h2>
         <p class="mt-6 text-text-muted text-lg leading-relaxed">
-          Have an AI project in mind? Need senior eyes on your architecture? Want a workshop for
-          your team? Drop a line — I read every message.
+          {t.contact.body}
         </p>
 
         <div class="mt-10 flex flex-col sm:flex-row gap-4">

@@ -1,5 +1,14 @@
 ---
+import type { Lang, UI } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  t: UI;
+}
+
+const { lang, t } = Astro.props;
 const year = new Date().getFullYear();
+const legalHref = lang === 'fr' ? '/fr/legal/' : '/legal/';
 ---
 
 <footer class="border-t border-white/5 py-12 mt-12">
@@ -13,7 +22,7 @@ const year = new Date().getFullYear();
       </div>
 
       <nav class="flex flex-wrap items-center gap-x-6 gap-y-2">
-        <a href="/legal" class="hover:text-text transition-colors">Mentions légales</a>
+        <a href={legalHref} class="hover:text-text transition-colors">{t.footer.legal}</a>
         <a href="mailto:contact@kaestria.fr" class="hover:text-text transition-colors">contact@kaestria.fr</a>
       </nav>
     </div>

@@ -1,66 +1,31 @@
 ---
-const products = [
-  {
-    name: 'Suplio',
-    tag: 'Mobile · iOS & Android',
-    description:
-      'AI-powered supplement scheduler. Scan barcodes or label photos, get personalized timing recommendations based on your daily routine, and never miss a dose.',
-    accent: 'from-emerald-400/20 to-teal-500/5',
-    badge: 'New',
-    badgeColor: 'bg-accent text-bg',
-    href: 'https://play.google.com/store/apps/details?id=com.scop.suplio',
-    cta: 'View on Google Play',
-    span: 'md:col-span-2 md:row-span-2',
-  },
-  {
-    name: 'RankingRider Web App',
-    tag: 'Web · SaaS',
-    description:
-      'AI-driven Shopify SEO automation. Bulk-generate meta tags, audit your store, and predict ranking impact before pushing changes.',
-    accent: 'from-violet-400/20 to-indigo-500/5',
-    badge: 'Live',
-    badgeColor: 'bg-violet-400/20 text-violet-300 border border-violet-400/30',
-    href: 'https://www.rankingrider.com',
-    cta: 'Visit rankingrider.com',
-    span: '',
-  },
-  {
-    name: 'RankingRider Shopify',
-    tag: 'Shopify App',
-    description:
-      'Same AI SEO power, deeply integrated into your Shopify admin. Optimize products in bulk without leaving your store.',
-    accent: 'from-emerald-400/15 to-emerald-600/5',
-    badge: 'Live',
-    badgeColor: 'bg-emerald-400/20 text-emerald-300 border border-emerald-400/30',
-    href: 'https://apps.shopify.com/rankingrider',
-    cta: 'View on Shopify App Store',
-    span: '',
-  },
-  {
-    name: 'RankingRider Wix',
-    tag: 'Wix App',
-    description:
-      'Wix store SEO automation, built on the same AI engine. In review on Wix App Market.',
-    accent: 'from-amber-400/15 to-orange-500/5',
-    badge: 'In review',
-    badgeColor: 'bg-amber-400/20 text-amber-300 border border-amber-400/30',
-    href: null,
-    cta: 'Coming soon',
-    span: '',
-  },
-  {
-    name: 'RankingRider BigCommerce',
-    tag: 'BigCommerce App',
-    description:
-      'The same SEO automation toolkit, extending to BigCommerce stores.',
-    accent: 'from-sky-400/15 to-blue-500/5',
-    badge: 'Soon',
-    badgeColor: 'bg-sky-400/20 text-sky-300 border border-sky-400/30',
-    href: null,
-    cta: 'Coming Q3 2026',
-    span: '',
-  },
+import type { UI } from '../i18n/ui';
+
+interface Props {
+  t: UI;
+}
+
+const { t } = Astro.props;
+
+const meta = [
+  { name: 'Suplio', accent: 'from-emerald-400/20 to-teal-500/5', badgeColor: 'bg-accent text-bg', href: 'https://play.google.com/store/apps/details?id=com.scop.suplio', span: 'md:col-span-2 md:row-span-2' },
+  { name: 'RankingRider Web App', accent: 'from-violet-400/20 to-indigo-500/5', badgeColor: 'bg-violet-400/20 text-violet-300 border border-violet-400/30', href: 'https://www.rankingrider.com', span: '' },
+  { name: 'RankingRider Shopify', accent: 'from-emerald-400/15 to-emerald-600/5', badgeColor: 'bg-emerald-400/20 text-emerald-300 border border-emerald-400/30', href: 'https://apps.shopify.com/rankingrider', span: '' },
+  { name: 'RankingRider Wix', accent: 'from-amber-400/15 to-orange-500/5', badgeColor: 'bg-amber-400/20 text-amber-300 border border-amber-400/30', href: null, span: '' },
+  { name: 'RankingRider BigCommerce', accent: 'from-sky-400/15 to-blue-500/5', badgeColor: 'bg-sky-400/20 text-sky-300 border border-sky-400/30', href: null, span: '' },
 ];
+
+const products = t.products.items.map((item, i) => {
+  const m = meta[i]!;
+  return {
+    ...m,
+    tag: item.tag,
+    description: item.description,
+    badge: t.products.badges[item.badgeKey],
+    cta: item.cta,
+    ctaInactive: item.ctaInactive,
+  };
+});
 ---
 
 <section id="products" class="py-24 lg:py-32 relative">
@@ -68,10 +33,10 @@ const products = [
     <div class="mb-16">
       <div class="font-mono text-sm text-accent mb-3">/products</div>
       <h2 class="text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl text-balance">
-        Apps shipping today, more on the way.
+        {t.products.sectionTitle}
       </h2>
       <p class="mt-4 text-text-muted text-lg max-w-2xl">
-        A growing portfolio of AI-native products for wellness and e-commerce.
+        {t.products.sectionSubtitle}
       </p>
     </div>
 
@@ -106,7 +71,7 @@ const products = [
                   {p.cta} <span aria-hidden="true">→</span>
                 </a>
               ) : (
-                <span class="text-sm text-text-dim italic">{p.cta}</span>
+                <span class="text-sm text-text-dim italic">{p.ctaInactive}</span>
               )}
             </div>
           </div>

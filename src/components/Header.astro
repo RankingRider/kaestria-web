@@ -1,25 +1,51 @@
 ---
+import { altLangUrl, type Lang, type UI } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  t: UI;
+}
+
+const { lang, t } = Astro.props;
+const homeHref = lang === 'fr' ? '/fr/' : '/';
+const switchHref = altLangUrl(Astro.url.pathname, lang);
+const switchLabel = lang === 'fr' ? 'EN' : 'FR';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-bg/70">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 group">
+    <a href={homeHref} class="flex items-center gap-2 group">
       <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-cyan-500 flex items-center justify-center font-bold text-bg text-sm">
         K
       </div>
       <span class="font-bold text-lg tracking-tight">Kaestria</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-8 text-sm text-text-muted">
-      <a href="/#products" class="hover:text-text transition-colors">Products</a>
-      <a href="/#services" class="hover:text-text transition-colors">Services</a>
-      <a href="/#about" class="hover:text-text transition-colors">About</a>
+    <nav class="hidden md:flex items-center gap-6 text-sm text-text-muted">
+      <a href={`${homeHref}#products`} class="hover:text-text transition-colors">{t.header.products}</a>
+      <a href={`${homeHref}#services`} class="hover:text-text transition-colors">{t.header.services}</a>
+      <a href={`${homeHref}#about`} class="hover:text-text transition-colors">{t.header.about}</a>
       <a
         href="mailto:contact@kaestria.fr"
         class="px-4 py-2 rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-all"
       >
-        Get in touch
+        {t.header.contact}
+      </a>
+      <a
+        href={switchHref}
+        class="font-mono text-xs px-2.5 py-1.5 rounded-md border border-white/10 hover:border-white/30 hover:text-text transition-all"
+        aria-label={`Switch language to ${switchLabel}`}
+      >
+        {switchLabel}
       </a>
     </nav>
+
+    <a
+      href={switchHref}
+      class="md:hidden font-mono text-xs px-2.5 py-1.5 rounded-md border border-white/10 text-text-muted hover:text-text transition-all"
+      aria-label={`Switch language to ${switchLabel}`}
+    >
+      {switchLabel}
+    </a>
   </div>
 </header>
