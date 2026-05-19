@@ -182,7 +182,7 @@ export const ui: Record<Lang, UI> = {
       p2Middle: ' (where I help teams adopt AI without breaking what works) and ',
       p2Product: 'product engineering',
       p2Tail: ' (where I build AI-native apps end to end — code, design, ops, distribution).',
-      p3: 'Generalist by training, AI expert by current practice. I speak English · Français · Polski and operate remote-first from Réunion Island.',
+      p3: 'Generalist by training, AI expert by current practice. I speak English · Français · Polski and operate remote-first from Reunion Island.',
       statsYears: 'Years XP',
       statsProducts: 'Products shipped',
       statsLanguages: 'Languages',
