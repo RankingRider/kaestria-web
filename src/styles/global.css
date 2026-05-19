@@ -12,6 +12,10 @@
   --color-accent-dim: #14b8a6;
   --color-accent-glow: rgba(45, 212, 191, 0.15);
 
+  /* RankingRider brand */
+  --color-rr: #7c3aed;
+  --color-rr-glow: rgba(124, 58, 237, 0.18);
+
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
