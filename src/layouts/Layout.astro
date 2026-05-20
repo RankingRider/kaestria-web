@@ -21,20 +21,17 @@ const altLang: Lang = lang === 'en' ? 'fr' : 'en';
 const altUrl = new URL(altPath, site).toString();
 const ogImage = new URL('/og-image.png', site).toString();
 
-const jsonLd = {
+const kaestriaJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'ProfessionalService',
+  '@id': `${site}/#kaestria`,
   name: 'Kaestria',
   legalName: 'EI Arthur Mrowiec',
   url: site,
   logo: new URL('/favicon.svg', site).toString(),
+  image: new URL('/og-image.png', site).toString(),
   description,
-  founder: {
-    '@type': 'Person',
-    name: 'Arthur Mrowiec',
-    jobTitle: 'Senior IT Project Manager & AI Engineer',
-    sameAs: ['https://www.linkedin.com/in/arthur-mrowiec/', 'https://fr.fiverr.com/amrowiec'],
-  },
+  priceRange: '€€',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '11 rue Maurice Lecolier',
@@ -44,6 +41,39 @@ const jsonLd = {
     addressCountry: 'FR',
   },
   email: 'contact@kaestria.fr',
+  founder: { '@id': `${site}/#arthur` },
+  areaServed: { '@type': 'Place', name: 'Worldwide' },
+  knowsLanguage: ['English', 'Français', 'Polski'],
+  sameAs: ['https://www.linkedin.com/in/arthur-mrowiec/', 'https://fr.fiverr.com/amrowiec'],
+};
+
+const arthurJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${site}/#arthur`,
+  name: 'Arthur Mrowiec',
+  jobTitle: 'Senior IT Project Manager & AI Engineer',
+  worksFor: { '@id': `${site}/#kaestria` },
+  url: site,
+  image: new URL('/og-image.png', site).toString(),
+  email: 'contact@kaestria.fr',
+  nationality: { '@type': 'Country', name: 'France' },
+  knowsLanguage: ['English', 'Français', 'Polski'],
+  knowsAbout: [
+    'Artificial Intelligence',
+    'Large Language Models',
+    'AI Agents',
+    'Software Engineering',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'Node.js',
+    'Cloud Architecture',
+    'DevOps',
+    'IT Project Management',
+    'Mobile App Development',
+    'E-commerce SEO',
+  ],
   sameAs: ['https://www.linkedin.com/in/arthur-mrowiec/', 'https://fr.fiverr.com/amrowiec'],
 };
 ---
@@ -88,7 +118,8 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(kaestriaJsonLd)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(arthurJsonLd)} is:inline />
   </head>
   <body class="min-h-screen overflow-x-hidden">
     <slot />

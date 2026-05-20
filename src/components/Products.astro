@@ -26,6 +26,23 @@ const suplio = {
   href: 'https://play.google.com/store/apps/details?id=com.scop.suplio',
 };
 
+const site = 'https://kaestria.fr';
+const suplioJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MobileApplication',
+  '@id': `${site}/#suplio`,
+  name: 'Suplio',
+  description: suplio.description,
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'Android, iOS',
+  downloadUrl: suplio.href,
+  url: suplio.href,
+  image: `${site}/suplio-icon.png`,
+  publisher: { '@id': `${site}/#kaestria` },
+  inLanguage: ['en', 'fr', 'es', 'pt-BR', 'pt-PT', 'zh', 'hi', 'bn', 'ru', 'pl'],
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+
 const rrProducts = [
   {
     name: 'RankingRider Web App',
@@ -190,4 +207,6 @@ const rrProducts = [
       </div>
     </div>
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(suplioJsonLd)} is:inline />
 </section>

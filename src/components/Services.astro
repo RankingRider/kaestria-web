@@ -9,6 +9,22 @@ const { t } = Astro.props;
 
 const icons = ['◉', '◈', '◇', '◐'];
 const services = t.services.items.map((s, i) => ({ ...s, icon: icons[i]! }));
+
+const site = 'https://kaestria.fr';
+const servicesJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': services.map((s, idx) => ({
+    '@type': 'Service',
+    '@id': `${site}/#service-${idx + 1}`,
+    name: s.title,
+    description: s.description,
+    serviceType: s.title,
+    provider: { '@id': `${site}/#kaestria` },
+    areaServed: { '@type': 'Place', name: 'Worldwide' },
+    availableLanguage: ['English', 'Français', 'Polski'],
+    audience: { '@type': 'Audience', audienceType: 'Tech teams, startups, scale-ups, product leaders' },
+  })),
+};
 ---
 
 <section id="services" class="py-24 lg:py-32 relative bg-bg-elevated/30">
@@ -33,4 +49,6 @@ const services = t.services.items.map((s, i) => ({ ...s, icon: icons[i]! }));
       ))}
     </div>
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(servicesJsonLd)} is:inline />
 </section>
