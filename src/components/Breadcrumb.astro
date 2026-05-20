@@ -1,0 +1,41 @@
+---
+interface Crumb {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  items: Crumb[]; // last item = current page (no link)
+}
+
+const { items } = Astro.props;
+const site = 'https://kaestria.fr';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: new URL(c.href, site).toString(),
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="mb-6">
+  <ol class="flex flex-wrap items-center gap-2 text-sm text-text-dim">
+    {items.map((c, i) => (
+      <li class="flex items-center gap-2">
+        {i > 0 && <span aria-hidden="true" class="text-text-dim/50">/</span>}
+        {i < items.length - 1 ? (
+          <a href={c.href} class="hover:text-text transition-colors">{c.name}</a>
+        ) : (
+          <span class="text-text-muted" aria-current="page">{c.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

@@ -73,6 +73,9 @@ export type UI = {
   footer: {
     legal: string;
   };
+  breadcrumb: {
+    home: string;
+  };
   legalPage: {
     title: string;
     editorTitle: string;
@@ -222,6 +225,7 @@ export const ui: Record<Lang, UI> = {
       ],
     },
     footer: { legal: 'Legal notice' },
+    breadcrumb: { home: 'Home' },
     legalPage: {
       title: 'Legal notice',
       editorTitle: 'Website editor',
@@ -372,6 +376,7 @@ export const ui: Record<Lang, UI> = {
       ],
     },
     footer: { legal: 'Mentions légales' },
+    breadcrumb: { home: 'Accueil' },
     legalPage: {
       title: 'Mentions légales',
       editorTitle: 'Éditeur du site',
