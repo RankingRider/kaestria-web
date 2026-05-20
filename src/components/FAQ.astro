@@ -1,0 +1,56 @@
+---
+import type { UI } from '../i18n/ui';
+
+interface Props {
+  t: UI;
+}
+
+const { t } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+---
+
+<section id="faq" class="py-24 lg:py-32 relative bg-bg-elevated/30">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="mb-12">
+      <div class="font-mono text-sm text-accent mb-3">/faq</div>
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl text-balance">
+        {t.faq.sectionTitle}
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {t.faq.items.map((item) => (
+        <details class="group rounded-2xl border border-white/5 bg-bg p-6 lg:p-7 hover:border-white/15 transition-all open:border-accent/30">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+            <h3 class="text-base lg:text-lg font-semibold tracking-tight pr-4">{item.q}</h3>
+            <span
+              class="shrink-0 w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-accent text-lg leading-none transition-transform group-open:rotate-45"
+              aria-hidden="true"
+            >+</span>
+          </summary>
+          <p class="mt-4 text-text-muted text-sm lg:text-base leading-relaxed pr-10">
+            {item.a}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</section>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>

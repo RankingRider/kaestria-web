@@ -12,6 +12,7 @@ export type UI = {
     products: string;
     services: string;
     about: string;
+    faq: string;
     contact: string;
   };
   hero: {
@@ -65,6 +66,10 @@ export type UI = {
     title: string;
     body: string;
   };
+  faq: {
+    sectionTitle: string;
+    items: Array<{ q: string; a: string }>;
+  };
   footer: {
     legal: string;
   };
@@ -87,7 +92,7 @@ export type UI = {
 
 export const ui: Record<Lang, UI> = {
   en: {
-    header: { products: 'Products', services: 'Services', about: 'About', contact: 'Get in touch' },
+    header: { products: 'Products', services: 'Services', about: 'About', faq: 'FAQ', contact: 'Get in touch' },
     hero: {
       badge: 'Available for senior consulting & AI engineering',
       titleLine1: 'Senior IT consulting',
@@ -191,6 +196,31 @@ export const ui: Record<Lang, UI> = {
       title: "Let's build something together.",
       body: 'Have an AI project in mind? Need senior eyes on your architecture? Want a workshop for your team? Drop a line — I read every message.',
     },
+    faq: {
+      sectionTitle: 'Common questions.',
+      items: [
+        {
+          q: 'What does Kaestria do?',
+          a: 'Two things: I build AI-native mobile and web products (Suplio, the RankingRider suite) and I help other teams adopt AI through senior consulting, hands-on workshops, and pragmatic tech delivery.',
+        },
+        {
+          q: 'Where are you based?',
+          a: 'Reunion Island — a French overseas territory in the Indian Ocean (GMT+4). I operate remote-first with clients across Europe, North America, and beyond.',
+        },
+        {
+          q: 'Can you work with international clients?',
+          a: 'Yes. I speak English, French and Polish, work fully remote, and adapt to any timezone — synchronously when collaboration calls for it, asynchronously when it improves throughput.',
+        },
+        {
+          q: "What's your typical engagement model — project, hourly, or retainer?",
+          a: 'Fixed-price for well-scoped projects, monthly retainers for ongoing partnerships, and hourly rates for shorter consulting engagements. We figure out the right fit during a first call.',
+        },
+        {
+          q: 'Do you train teams or just deliver?',
+          a: 'Both — and often combined. I ship code while transferring knowledge, run targeted workshops (Claude Code, AI agents, automation), and design adoption paths so your team owns the result long after I leave.',
+        },
+      ],
+    },
     footer: { legal: 'Legal notice' },
     legalPage: {
       title: 'Legal notice',
@@ -212,7 +242,7 @@ export const ui: Record<Lang, UI> = {
     },
   },
   fr: {
-    header: { products: 'Produits', services: 'Services', about: 'À propos', contact: 'Me contacter' },
+    header: { products: 'Produits', services: 'Services', about: 'À propos', faq: 'FAQ', contact: 'Me contacter' },
     hero: {
       badge: 'Disponible pour conseil senior & ingénierie IA',
       titleLine1: 'Conseil IT senior',
@@ -315,6 +345,31 @@ export const ui: Record<Lang, UI> = {
     contact: {
       title: 'Construisons quelque chose ensemble.',
       body: 'Un projet IA en tête ? Besoin d\'un regard senior sur votre archi ? Un workshop pour votre équipe ? Écrivez-moi — je lis chaque message.',
+    },
+    faq: {
+      sectionTitle: 'Questions fréquentes.',
+      items: [
+        {
+          q: 'Que fait Kaestria ?',
+          a: 'Deux choses : je construis des produits AI-native mobiles et web (Suplio, la suite RankingRider), et j\'aide d\'autres équipes à adopter l\'IA via conseil senior, workshops pratiques, et livraison technique pragmatique.',
+        },
+        {
+          q: 'Où êtes-vous basé ?',
+          a: 'La Réunion — département français d\'outre-mer dans l\'océan Indien (GMT+4). Je travaille en remote-first avec des clients en Europe, Amérique du Nord, et au-delà.',
+        },
+        {
+          q: 'Travaillez-vous avec des clients internationaux ?',
+          a: 'Oui. Je parle anglais, français et polonais, fonctionne en full remote, et m\'adapte à n\'importe quel fuseau horaire — synchrone quand la collaboration l\'exige, asynchrone quand ça améliore le throughput.',
+        },
+        {
+          q: 'Quel est votre modèle d\'engagement typique — projet, taux horaire ou rétainer ?',
+          a: 'Forfaits pour les projets bien cadrés, rétainers mensuels pour les partenariats récurrents, taux horaire pour les missions de conseil courtes. On définit le bon format lors d\'un premier échange.',
+        },
+        {
+          q: 'Formez-vous les équipes ou livrez-vous uniquement ?',
+          a: 'Les deux — et souvent combinés. Je livre du code tout en transférant la connaissance, j\'anime des workshops ciblés (Claude Code, agents IA, automatisation), et je conçois des parcours d\'adoption pour que votre équipe maîtrise le résultat bien après mon départ.',
+        },
+      ],
     },
     footer: { legal: 'Mentions légales' },
     legalPage: {
