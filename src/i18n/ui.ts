@@ -113,7 +113,7 @@ export const ui: Record<Lang, UI> = {
       groupWellness: 'Wellness',
       groupWellnessTag: '/wellness · 1 product',
       groupEcommerce: 'E-commerce',
-      groupEcommerceTag: '/e-commerce · 4 products',
+      groupEcommerceTag: '/e-commerce · 5 products',
       badges: { new: 'New', live: 'Live', inReview: 'In review', soon: 'Soon' },
       items: [
         {
@@ -271,7 +271,7 @@ export const ui: Record<Lang, UI> = {
       groupWellness: 'Bien-être',
       groupWellnessTag: '/wellness · 1 produit',
       groupEcommerce: 'E-commerce',
-      groupEcommerceTag: '/e-commerce · 4 produits',
+      groupEcommerceTag: '/e-commerce · 5 produits',
       badges: { new: 'Nouveau', live: 'En ligne', inReview: 'En review', soon: 'Bientôt' },
       items: [
         {

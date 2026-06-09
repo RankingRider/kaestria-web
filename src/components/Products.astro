@@ -12,6 +12,7 @@ const RR_VARIANTS = [
   { accent: 'from-violet-500/30 via-violet-600/10 to-indigo-500/5', badgeLive: 'bg-violet-400/25 text-violet-100 border border-violet-400/40' },
   { accent: 'from-purple-500/30 via-purple-600/10 to-fuchsia-500/5', badgeLive: 'bg-purple-400/25 text-purple-100 border border-purple-400/40' },
   { accent: 'from-fuchsia-500/25 via-violet-600/10 to-purple-500/5', badgeReview: 'bg-amber-400/20 text-amber-300 border border-amber-400/30' },
+  { accent: 'from-indigo-500/25 via-violet-600/10 to-purple-500/5', badgeReview: 'bg-amber-400/20 text-amber-300 border border-amber-400/30' },
   { accent: 'from-slate-500/15 via-slate-600/5 to-slate-700/5', badgeSoon: 'bg-slate-400/15 text-slate-300 border border-dashed border-slate-400/40' },
 ];
 
@@ -75,14 +76,24 @@ const rrProducts = [
     ctaInactive: items[3]!.ctaInactive,
   },
   {
-    name: 'RankingRider BigCommerce',
+    name: 'RankingRider Ecwid',
     tag: items[4]!.tag,
     description: items[4]!.description,
     badge: t.products.badges[items[4]!.badgeKey],
-    badgeColor: RR_VARIANTS[3]!.badgeSoon!,
+    badgeColor: RR_VARIANTS[3]!.badgeReview!,
     accent: RR_VARIANTS[3]!.accent,
     href: null,
     ctaInactive: items[4]!.ctaInactive,
+  },
+  {
+    name: 'RankingRider BigCommerce',
+    tag: items[5]!.tag,
+    description: items[5]!.description,
+    badge: t.products.badges[items[5]!.badgeKey],
+    badgeColor: RR_VARIANTS[4]!.badgeSoon!,
+    accent: RR_VARIANTS[4]!.accent,
+    href: null,
+    ctaInactive: items[5]!.ctaInactive,
   },
 ];
 ---
