@@ -145,6 +145,13 @@ export const ui: Record<Lang, UI> = {
           ctaInactive: 'Coming soon',
         },
         {
+          tag: 'Ecwid App',
+          description: 'The same AI SEO engine for Ecwid stores. In review on the Ecwid App Market.',
+          badgeKey: 'inReview',
+          cta: '',
+          ctaInactive: 'Coming soon',
+        },
+        {
           tag: 'BigCommerce App',
           description: 'The same SEO automation toolkit, extending to BigCommerce stores.',
           badgeKey: 'soon',
@@ -291,6 +298,13 @@ export const ui: Record<Lang, UI> = {
         {
           tag: 'Wix App',
           description: 'Automatisation SEO Wix, basée sur le même moteur IA. En cours de review sur Wix App Market.',
+          badgeKey: 'inReview',
+          cta: '',
+          ctaInactive: 'Bientôt disponible',
+        },
+        {
+          tag: 'Ecwid App',
+          description: 'Le même moteur SEO IA pour les boutiques Ecwid. En cours de review sur l\'Ecwid App Market.',
           badgeKey: 'inReview',
           cta: '',
           ctaInactive: 'Bientôt disponible',
